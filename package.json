@@ -1,0 +1,23 @@
+{
+  "name": "support",
+  "version": "1.0.0",
+  "description": "dian zan gong neng ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ww18/support.git"
+  },
+  "keywords": [
+    "css",
+    "es6"
+  ],
+  "author": "lww",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ww18/support/issues"
+  },
+  "homepage": "https://github.com/ww18/support#readme"
+}
