@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title></title>
   <link href="assets/css.css" rel="stylesheet" type="text/css">
-  <script src="assets/PraiseButton.js"></script>
+  <script src="https://cdn.bootcss.com/systemjs/0.21.0/system.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  
 </head>
 <body>
   <div class="support-background">
@@ -18,11 +20,20 @@
       <!--<div class="support-arm"></div>-->
     <!--</div>-->
   </div>
+  <script>
+  SystemJS.import('/lib/Thumb.js').then(function (m) {
+    //因为不是用jquery写的，所以如果写成fn的函数的话还要再改代码，所以就直接写成jquery的方法了
+    $.Thumb = function(opt){
+      return new m.default(opt);
+    }
+    let opt = {
+      container: '.support-background'
+    };
+    $.Thumb(opt);
+  });
+</script> 
 <script>
-  let opt = {
-    container: '.support-background'
-  };
-  new Thumb(opt);
+  
 </script>
 </body>
 </html>
