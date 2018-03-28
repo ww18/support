@@ -1,7 +1,7 @@
 .support-background{
   width: 800px;
   height: 500px;
-  background: url("../1.jpg") no-repeat center;
+  /*background: url("../1.jpg") no-repeat center;*/
 }
 .support-container{
   position: relative;

@@ -4,8 +4,9 @@
   "description": "dian zan gong neng ",
   "main": "index.js",
   "scripts": {
+    "bBuild": "babel assets -d dist",
     "start": "http-server -a 0.0.0.0 -p 8080",
-    "bBuild": "babel assets -d lib"
+    "unit": "karma start"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,17 @@
   "homepage": "https://github.com/ww18/support#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.1",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-webpack": "^3.0.0",
+    "phantomjs": "^2.1.7+deprecated",
+    "phantomjs-prebuilt": "^2.1.16",
+    "webpack": "^3.3.0"
   }
 }

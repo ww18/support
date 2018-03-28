@@ -38,28 +38,31 @@ var Thumb = function (_PraiseButton) {
     _createClass(Thumb, [{
         key: 'init',
         value: function init() {
-            var container = document.querySelector(this.opt.container);
-            container.appendChild(this.numHtml);
-            container.appendChild(this.html);
+            var _this2 = this;
 
-            this.addClick();
+            var container = document.querySelector(this.opt.container);
+            if (container) {
+                container.appendChild(this.numHtml);
+                container.appendChild(this.html);
+                this.html.addEventListener('click', function () {
+                    _this2.addClick();
+                });
+            }
         }
     }, {
         key: 'addClick',
         value: function addClick() {
-            var _this2 = this;
+            var _this3 = this;
 
-            this.html.addEventListener('click', function () {
-                var ani = document.createElement('div');
-                ani.className = 'support-ani';
-                ani.innerHTML = '+1';
-                _this2.html.appendChild(ani);
-                _this2.clickNum++;
-                _this2.numHtml.innerHTML = _this2.clickNum;
-                setTimeout(function () {
-                    _this2.html.removeChild(ani);
-                }, 1000);
-            });
+            var ani = document.createElement('div');
+            ani.className = 'support-ani';
+            ani.innerHTML = '+1';
+            this.html.appendChild(ani);
+            this.clickNum++;
+            this.numHtml.innerHTML = this.clickNum;
+            setTimeout(function () {
+                _this3.html.removeChild(ani);
+            }, 1000);
         }
     }]);
 
