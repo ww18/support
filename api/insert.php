@@ -16,13 +16,13 @@
     	//设置了也不支持中文，不知道为什么
 
     	//需要先查看有没有，没有插入，有的话更新
-    	$findSql = "select username=$username from support";
+    	$findSql = "select * from support where username=$username";
     	$find = $conn->query($findSql);
-
-    	if(count($find)){
-    	    $insert = "update support set num=$num where username=$username";
-    	}else{
+        //echo mysqli_fetch_array($find)['username'];
+    	if(empty(mysqli_fetch_array($find))){
     	    $insert = "insert into support (username, num) values ($username, $num)";
+    	}else{
+    	    $insert = "update support set num=$num where username=$username";
     	}
 
     	$result = $conn->query($insert);
