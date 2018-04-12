@@ -165,6 +165,7 @@
     left: 50%;
     font-size: 20px;
     animation: support-move 1s;
+    animation-fill-mode: forwards;
     z-index: 6;
 }
 @keyframes support-move {

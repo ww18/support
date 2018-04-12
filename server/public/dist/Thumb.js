@@ -30,7 +30,7 @@ var Thumb = function (_PraiseButton) {
         _this.clickNum = 0;
         _this.numHtml = document.createElement('div');
         _this.numHtml.className = 'support-number';
-        _this.numHtml.innerHTML = _this.clickNum;
+        //this.numHtml.innerHTML = this.clickNum;
         _this.init();
         return _this;
     }
@@ -45,21 +45,22 @@ var Thumb = function (_PraiseButton) {
                 container.appendChild(this.numHtml);
                 container.appendChild(this.html);
                 this.html.addEventListener('click', function () {
-                    _this2.addClick();
+                    _this2.opt.callback();
                 });
             }
+            return this;
         }
     }, {
-        key: 'addClick',
-        value: function addClick() {
+        key: 'addAnimation',
+        value: function addAnimation() {
             var _this3 = this;
 
             var ani = document.createElement('div');
             ani.className = 'support-ani';
             ani.innerHTML = '+1';
             this.html.appendChild(ani);
-            this.clickNum++;
-            this.numHtml.innerHTML = this.clickNum;
+            //this.clickNum++;
+            //this.numHtml.innerHTML = this.clickNum;
             setTimeout(function () {
                 _this3.html.removeChild(ani);
             }, 1000);

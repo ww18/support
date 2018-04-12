@@ -6,24 +6,43 @@
     <link rel="stylesheet" type="text/css" href="/style/index.css">
     <script src="https://cdn.bootcss.com/systemjs/0.21.0/system.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <form method="get" action="/addSupport">
-        用户名：<input type="text" name="username" id="username" /><br/>
-        密  码：<input type="text" name="num" id="num" />
+        用户名：<input type="text" name="username" id="username" value="{{username}}" /><br/>
+        点击数：<input type="text" name="num" id="num" value="{{num}}" />
         <input type="submit" value="提交">
     </form>
     <div class="support-background"></div>
     <script>
+        var thumb = null;
+        function clickFn(){
+            $('#num').val(parseInt($('#num').val())+1);
+            axios.get('/addSupport', {
+                params: {
+                    username: $('#username').val(),
+                    num: $('#num').val()
+                }
+            })
+            .then(function (response) {
+                thumb.addAnimation();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        }
         SystemJS.import('/dist/Thumb.js').then(function (m) {
             //因为不是用jquery写的，所以如果写成fn的函数的话还要再改代码，所以就直接写成jquery的方法了
             $.Thumb = function(opt){
                 return new m.default(opt);
             }
             let opt = {
-                container: '.support-background'
+                container: '.support-background',
+                callback: clickFn
             };
-            $.Thumb(opt);
+            thumb = $.Thumb(opt);
         });
     </script>
 </body>

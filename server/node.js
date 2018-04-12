@@ -26,7 +26,9 @@ app.use(router.routes(),router.allowedMethods());
 
 //路由
 router.get('/index', async(ctx,next)=>{
-    ctx.body = await ctx.render('index.html');
+    const data = ctx.query;
+    console.log(data);
+    ctx.body = await ctx.render('index.html',data);
 })
 
 
@@ -34,14 +36,15 @@ router.get('/index', async(ctx,next)=>{
 router.get('/addSupport', async(ctx,next)=>{
     const data = ctx.query;
     const options = {
-        uri: 'http://support.com:8061/insert.php',
+        uri: 'http://support.com:8061/insert.php?username='+data.username + '&num='+data.num,
         method: 'GET'
     };
-    //var res ;
     var req = await rp(options);
     console.log(req);
+    //ctx.body = req;
     if(req === '成功'){
-        ctx.redirect('/index');
+        //console.log(data);
+        ctx.redirect('/index?username='+data.username + '&num='+data.num);
         //ctx.body = req;
     }
     //ctx.body = ctx.query.username + ctx.query.num;

@@ -7,7 +7,7 @@ class Thumb extends PraiseButton{
         this.clickNum = 0;
         this.numHtml = document.createElement('div');
         this.numHtml.className = 'support-number';
-        this.numHtml.innerHTML = this.clickNum;
+        //this.numHtml.innerHTML = this.clickNum;
         this.init();
     }
     init(){
@@ -16,17 +16,18 @@ class Thumb extends PraiseButton{
             container.appendChild(this.numHtml);
             container.appendChild(this.html);
             this.html.addEventListener('click',()=>{
-                this.addClick();
+                this.opt.callback();
             })
         }
+        return this;
     }
-    addClick(){
+    addAnimation(){
         let ani = document.createElement('div');
         ani.className = 'support-ani';
         ani.innerHTML = '+1';
         this.html.appendChild(ani);
-        this.clickNum++;
-        this.numHtml.innerHTML = this.clickNum;
+        //this.clickNum++;
+        //this.numHtml.innerHTML = this.clickNum;
         setTimeout(()=>{
             this.html.removeChild(ani);
         },1000)
